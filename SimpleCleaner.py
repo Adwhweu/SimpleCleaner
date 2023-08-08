@@ -94,7 +94,7 @@ def open_menu():
     a = tkthread.call(g.run)
 
 
-def maid():
+def main():
     global icon
     image = PIL.Image.open('logo1.png')
     icon = pystray.Icon("Simple Optimizer", image, menu=pystray.Menu(
@@ -114,4 +114,4 @@ def close():
 
 
 if __name__ == "__main__":
-    maid()
+    main()
