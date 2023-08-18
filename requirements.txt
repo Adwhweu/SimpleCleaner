@@ -1,6 +1,7 @@
 Pillow==10.0.0
 psutil==5.9.5
 pystray==0.19.4
-pywinstyles==1.3
+pywinstyles==1.4
 tkthread==0.5.2
 customtkinter==5.2.0
+pyglet==2.0.9
