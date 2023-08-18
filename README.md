@@ -7,5 +7,6 @@ RUS: Это всего лишь простой очиститель операт
 
 
 
-![image](https://github.com/Adwhweu/SimpleCleaner/assets/122550443/073654ef-8819-4165-8c71-4c39665673d0) 
+![image](https://github.com/Adwhweu/SimpleCleaner/assets/122550443/073654ef-8819-4165-8c71-4c39665673d0) ![image](https://github.com/Adwhweu/SimpleCleaner/assets/122550443/d6d4d570-a868-4d18-916c-a62e84311dd7)
+
 
