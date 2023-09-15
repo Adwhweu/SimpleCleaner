@@ -1,6 +1,6 @@
 # SimpleCleaner
 ENG: It's just a simple ram cleaner written in python.
-     After launching, an icon will appear in the tray, clicking on which you can select the appropriate item "Open, clear or close".
+     After launching, an icon will appear in the tray, clicking on which you can select the appropriate item "Open, clean or close".
      There is an intuitive menu, with the ability to notify and automatically clean memory when filled by x %.
       
      
