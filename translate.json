@@ -1,0 +1,24 @@
+{
+  "russian": {
+    "MainTAB": "Главная",
+    "Settings": "Настройки",
+    "MemoryUsage": "Использование памяти",
+    "Clean": "Очистить",
+    "CleanWhenAbove": "Очистить когда заполнено: ",
+    "NotifyWhenAbove": "Уведомить когда заполнено: ",
+    "DangerousThreshold": "⚠ Опасный порог",
+    "CriticalThreshold": " ⚠ Критический порог ",
+    "Language": " Язык "
+  },
+  "english": {
+    "MainTAB": "Main",
+    "Settings": "Settings",
+    "MemoryUsage": "Memory usage",
+    "Clean": "Clean",
+    "CleanWhenAbove": "Clean when above: ",
+    "NotifyWhenAbove": "Notify when above: ",
+    "DangerousThreshold": " ⚠ Dangerous threshold ",
+    "CriticalThreshold": " ⚠ Critical threshold",
+    "Language": " Language "
+  }
+}
