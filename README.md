@@ -11,7 +11,7 @@ RUS: Это всего лишь простой очиститель операт
 
 
 ![image](https://github.com/Adwhweu/SimpleCleaner/assets/122550443/df16bc43-b671-4955-8d70-9049ac0ca07d)
-![Uploading image.png…]()
+![image](https://github.com/Adwhweu/SimpleCleaner/assets/122550443/5c0c1ff8-fdc7-457c-8c38-f036059da600)
 
 
 
