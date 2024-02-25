@@ -4,8 +4,8 @@
     "Settings": "Настройки",
     "MemoryUsage": "Использование памяти",
     "Clean": "Очистить",
-    "CleanWhenAbove": "Очистить когда заполнено: ",
-    "NotifyWhenAbove": "Уведомить когда заполнено: ",
+    "CleanWhenAbove": "Очистить при %: ",
+    "NotifyWhenAbove": "Уведомить при %: ",
     "DangerousThreshold": "⚠ Опасный порог",
     "CriticalThreshold": " ⚠ Критический порог ",
     "Language": " Язык "
@@ -15,8 +15,8 @@
     "Settings": "Settings",
     "MemoryUsage": "Memory usage",
     "Clean": "Clean",
-    "CleanWhenAbove": "Clean when above: ",
-    "NotifyWhenAbove": "Notify when above: ",
+    "CleanWhenAbove": "Clean when above %: ",
+    "NotifyWhenAbove": "Notify when above %: ",
     "DangerousThreshold": " ⚠ Dangerous threshold ",
     "CriticalThreshold": " ⚠ Critical threshold",
     "Language": " Language "
