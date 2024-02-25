@@ -229,10 +229,6 @@ class GUI:
         mem1 = round(number=used_memory / GB, ndigits=1)
         mem2 = round(number=memory.total / GB, ndigits=1)
 
-        aa = self.dangerperc.get()
-        bb = self.critperc.get()
-
-
         try:
             if int(self.dangerperc.get()) <= memory_percent < int(self.critperc.get()):
                 self.lablperc.configure(text_color="orange")
