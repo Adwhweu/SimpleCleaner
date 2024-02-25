@@ -1,4 +1,3 @@
-import gc
 import threading
 import sys
 import psutil
