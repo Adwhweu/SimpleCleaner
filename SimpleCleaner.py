@@ -9,7 +9,7 @@ import PIL, PIL.Image
 import pystray
 import tkthread
 import pyglet
-import json
+import ujson as json
 import os
 import tkinter.messagebox as msg
 
@@ -20,6 +20,7 @@ def setlang(var):
         kd.close()
     msg.showinfo("The language has been changed", "Restart the app!")
     close()
+    sys.exit()
 
 
 if not os.path.isfile("translate.json"):
@@ -98,9 +99,10 @@ def playnotify():
         pass
 
 def valid(inp):
-    return inp.isdigit()
-
-
+    if inp.isdigit():
+        if 0 <= int(inp) <= 100:
+            return True
+    return False
 class GUI:
     def __init__(self):
         ctk.set_default_color_theme("theme.json")
@@ -148,7 +150,7 @@ class GUI:
         self.fr = ctk.CTkFrame(self.tab_2, height=20)
         self.fr.pack()
 
-        self.inpp = ctk.CTkEntry(self.fr, width=50, validate='key', validatecommand=(self.validcmd,'%S'))
+        self.inpp = ctk.CTkEntry(self.fr, width=50, validate='key', validatecommand=(self.validcmd,'%P'))
         self.inpp.grid(row=0, column=1)
 
         self.taucl = ctk.CTkCheckBox(self.fr, variable=self.xa, width=25, text=ew, onvalue="on", offvalue="off")
@@ -157,7 +159,7 @@ class GUI:
         self.fr2 = ctk.CTkFrame(self.tab_2, height=20)
         self.fr2.pack()
 
-        self.ntfe = ctk.CTkEntry(self.fr2, width=50, validate='key', validatecommand=(self.validcmd,'%S'))
+        self.ntfe = ctk.CTkEntry(self.fr2, width=50, validate='key', validatecommand=(self.validcmd,'%P'))
         self.ntfe.grid(row=0, column=1)
 
         self.chkd = ctk.CTkCheckBox(self.fr2, variable=self.xa2, width=25, text=fw, onvalue="on", offvalue="off")
@@ -173,13 +175,15 @@ class GUI:
         self.dangerpercl = ctk.CTkLabel(self.fr3, text=gw, text_color="orange")
         self.dangerpercl.grid(row=0, column=0)
 
-        self.dangerperc = ctk.CTkEntry(self.fr3, width=35, validate='key', validatecommand=(self.validcmd,'%S'))
+        self.dangerperc = (ctk.CTkEntry(self.fr3, width=35, validate='key', validatecommand=(self.validcmd,'%P')))
+        self.dangerperc.insert(0, 60)
         self.dangerperc.grid(row=0, column=1)
 
         self.critpercl = ctk.CTkLabel(self.fr3, text=iw, text_color="red")
         self.critpercl.grid(row=1, column=0)
 
-        self.critperc = ctk.CTkEntry(self.fr3, width=35, validate='key', validatecommand=(self.validcmd,'%S'))
+        self.critperc = ctk.CTkEntry(self.fr3, width=35, validate='key', validatecommand=(self.validcmd,'%P'))
+        self.critperc.insert(0, 90)
         self.critperc.grid(row=1, column=1)
 
         self.null3 = ctk.CTkLabel(self.tab_2, text="")
@@ -233,29 +237,6 @@ class GUI:
 
         aa = self.dangerperc.get()
         bb = self.critperc.get()
-
-
-        if not aa:
-            self.dangerperc.delete(0, 'end')
-            self.dangerperc.insert(0, "60")
-        else:
-            if int(aa) <= 0:
-                self.dangerperc.delete(0, 'end')
-                self.dangerperc.insert(0, "60")
-            elif int(aa) > 100:
-                self.dangerperc.delete(0, 'end')
-                self.dangerperc.insert(0, "60")
-
-        if not bb:
-            self.critperc.delete(0, 'end')
-            self.critperc.insert(0, "90")
-        else:
-            if int(bb) <= 0:
-                self.critperc.delete(0, 'end')
-                self.critperc.insert(0, "90")
-            elif int(bb) < 100:
-                self.critperc.delete(0, 'end')
-                self.critperc.insert(0, "90")
 
 
         try:
