@@ -114,11 +114,6 @@ class GUI:
 
         self.xa = ctk.StringVar(value="off")
         self.xa2 = ctk.StringVar(value="off")
-        self.xa3 = ctk.StringVar()
-        self.xa4 = ctk.StringVar()
-        self.xa5 = ctk.StringVar()
-        self.xa6 = ctk.StringVar()
-        self.vad = ctk.StringVar()
         self.validcmd = self.window.register(valid)
 
         self.tabview = ctk.CTkTabview(self.window, border_width=1)
