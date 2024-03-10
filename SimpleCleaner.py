@@ -4,13 +4,74 @@ import psutil
 import ctypes
 import customtkinter as ctk
 import pywinstyles
-import PIL, PIL.Image
+import PIL.Image
 import pystray
 import tkthread
 import pyglet
-import ujson as json
+import json
 import os
 import tkinter.messagebox as msg
+
+langs = []
+
+
+if not os.path.isfile("translate.json"):
+    msg.showerror("Error", "File 'translate.json' missing")
+    sys.exit()
+if not os.path.isfile("language.txt"):
+    with open("language.txt", "w+") as f:
+        f.write("en")
+        f.close()
+else:
+    with open("language.txt", "r") as f:
+        a = f.read()
+        if a:
+            try:
+                with open("translate.json", "r", encoding='utf-8') as d:
+                    ma = json.load(d)
+                    for i in ma:
+                        langs.append(i)
+                    mad = ma[a]
+                    aw = mad["MainTAB"]
+                    bw = mad["Settings"]
+                    cw = mad["MemoryUsage"]
+                    dw = mad["Clean"]
+                    ew = mad["CleanWhenAbove"]
+                    fw = mad["NotifyWhenAbove"]
+                    gw = mad["DangerousThreshold"]
+                    iw = mad["CriticalThreshold"]
+                    ij = mad["Language"]
+                    lang = mad["Lang_name"]
+                    d.close()
+
+            except:
+                msg.showerror("Error", "An error occurred while reading the translation file.")
+                with open("language.txt", "w+") as f:
+                    f.write("en")
+                    f.close()
+                sys.exit()
+
+        else:
+            try:
+                with open("translate.json", "r", encoding='utf-8') as d:
+                    ma = json.load(d)
+                    for i in ma:
+                        langs.append(i)
+                    mad = ma[0]
+                    aw = mad["MainTAB"]
+                    bw = mad["Settings"]
+                    cw = mad["MemoryUsage"]
+                    dw = mad["Clean"]
+                    ew = mad["CleanWhenAbove"]
+                    fw = mad["NotifyWhenAbove"]
+                    gw = mad["DangerousThreshold"]
+                    iw = mad["CriticalThreshold"]
+                    ij = mad["Language"]
+                    lang = mad["Lang_name"]
+                    d.close()
+            except:
+                msg.showerror("Error", "An error occurred while reading the translation file. Restore the original translate.json file.")
+                sys.exit()
 
 def setlang(var):
     a = var.lower()
@@ -19,61 +80,6 @@ def setlang(var):
         kd.close()
     msg.showinfo("The language has been changed", "Restart the app!")
     close()
-    sys.exit()
-
-
-if not os.path.isfile("translate.json"):
-    msg.showerror("Error", "File 'translate.json' missing")
-    sys.exit()
-if not os.path.isfile("language.txt"):
-    with open("language.txt", "w+") as f:
-        f.write("english")
-        f.close()
-else:
-    with open("language.txt", "r") as f:
-        a = f.read()
-        if a == "russian":
-            with open("translate.json", "r", encoding='utf-8') as d:
-                ma = json.load(d)
-                aw = ma["russian"]["MainTAB"]
-                bw = ma["russian"]["Settings"]
-                cw = ma["russian"]["MemoryUsage"]
-                dw = ma["russian"]["Clean"]
-                ew = ma["russian"]["CleanWhenAbove"]
-                fw = ma["russian"]["NotifyWhenAbove"]
-                gw = ma["russian"]["DangerousThreshold"]
-                iw = ma["russian"]["CriticalThreshold"]
-                ij = ma["russian"]["Language"]
-                lang = "Russian"
-                d.close()
-        elif a == "english":
-            with open("translate.json", "r", encoding='utf-8') as d:
-                ma = json.load(d)
-                aw = ma["english"]["MainTAB"]
-                bw = ma["english"]["Settings"]
-                cw = ma["english"]["MemoryUsage"]
-                dw = ma["english"]["Clean"]
-                ew = ma["english"]["CleanWhenAbove"]
-                fw = ma["english"]["NotifyWhenAbove"]
-                gw = ma["english"]["DangerousThreshold"]
-                iw = ma["english"]["CriticalThreshold"]
-                ij = ma["english"]["Language"]
-                lang = "English"
-                d.close()
-        else:
-            with open("translate.json", "r", encoding='utf-8') as d:
-                ma = json.load(d)
-                aw = ma["english"]["MainTAB"]
-                bw = ma["english"]["Settings"]
-                cw = ma["english"]["MemoryUsage"]
-                dw = ma["english"]["Clean"]
-                ew = ma["english"]["CleanWhenAbove"]
-                fw = ma["english"]["NotifyWhenAbove"]
-                gw = ma["english"]["DangerousThreshold"]
-                iw = ma["english"]["CriticalThreshold"]
-                ij = ma["english"]["Language"]
-                lang = "English"
-                d.close()
 
 
 def clean():
@@ -88,8 +94,6 @@ def clean():
     except:
         pass
 
-
-
 def playnotify():
     try:
         music = pyglet.resource.media('MemNotify.mp3')
@@ -102,6 +106,7 @@ def valid(inp):
         if 0 <= int(inp) <= 100:
             return True
     return False
+
 class GUI:
     def __init__(self):
         ctk.set_default_color_theme("theme.json")
@@ -189,18 +194,12 @@ class GUI:
         self.langlbl = ctk.CTkLabel(self.fr4, text=ij)
         self.langlbl.grid(column=0, row=0)
 
-        self.langsel = ctk.CTkComboBox(self.fr4, values=["Russian", "English"], width=90)
+        self.langsel = ctk.CTkComboBox(self.fr4, values=langs, width=90, state="readonly")
         self.langsel.configure(command=lambda var: setlang(self.langsel.get()))
         self.langsel.set(lang)
         self.langsel.grid(column=1, row=0)
 
-
-
-        try:
-            self.update_memory_bar()
-        except:
-            pass
-
+        self.update_memory_bar()
 
     def cauto(self, a, b, c):
         if a == "on":
@@ -228,6 +227,7 @@ class GUI:
 
         mem1 = round(number=used_memory / GB, ndigits=1)
         mem2 = round(number=memory.total / GB, ndigits=1)
+
 
         try:
             if int(self.dangerperc.get()) <= memory_percent < int(self.critperc.get()):
