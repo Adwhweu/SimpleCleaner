@@ -1,5 +1,6 @@
 {
-  "russian": {
+  "ru": {
+    "Lang_name": "Русский",
     "MainTAB": "Главная",
     "Settings": "Настройки",
     "MemoryUsage": "Использование памяти",
@@ -10,7 +11,8 @@
     "CriticalThreshold": " ⚠ Критический порог ",
     "Language": " Язык "
   },
-  "english": {
+  "en": {
+    "Lang_name": "English",
     "MainTAB": "Main",
     "Settings": "Settings",
     "MemoryUsage": "Memory usage",
